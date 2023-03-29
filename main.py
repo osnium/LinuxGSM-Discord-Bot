@@ -1,9 +1,5 @@
-import discord, os
-from discord.ext import commands
-from dotenv import load_dotenv
+import discord
 
-load_dotenv()
-token = os.getenv("TOKEN")
 
 intents = discord.Intents.default()
 intents.members = True
@@ -18,18 +14,18 @@ async def on_ready():
 
 bot.load_extension("cogs.gameservers")
 
+# reload_extension is currently somewhat broken in Pycord wouldn't recommend using it
+
+# @bot.slash_command(name="reload", description="Reloads the Gameserver Cog")
+# @commands.is_owner()
+# async def reload(ctx):
+#     try:
+#         bot.reload_extension("cogs.gameservers")
+#     except Exception as e:
+#         await ctx.respond(f"Error while reloading Gameserver Cog: {e}",ephemeral=True)
+#     else:
+#         await ctx.respond("Reloaded Gameserver Cog",ephemeral=True)
 
 
-@bot.slash_command(name="reload", description="Reloads the Gameserver Cog")
-@commands.is_owner()
-async def reload(ctx):
-    try:
-        bot.reload_extension("cogs.gameservers")
-    except Exception as e:
-        await ctx.respond(f"Error while reloading Gameserver Cog: {e}",ephemeral=True)
-    else:
-        await ctx.respond("Reloaded Gameserver Cog",ephemeral=True)
 
-
-
-bot.run(token) # run the bot with the token
+bot.run("") # run the bot with the token

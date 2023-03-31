@@ -1,6 +1,6 @@
 {
     "example1": {
-        "serverName": "SCP Secret Laboratory Server",
+        "serverName": "example server",
         "fileName": "./exampleserver",
         "path": "/home/exampleuser/example/"
     },

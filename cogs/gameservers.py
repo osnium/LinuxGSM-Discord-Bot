@@ -8,6 +8,7 @@ import json
 
 running = False
 gameRunning = None
+cmds = ["start", "stop", "restart", "update"]
 
 with open("gameservers.json", "r") as f:
     global config
@@ -17,13 +18,20 @@ class gameservers(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    #get the Gameservers from the config file
+    def get_servers(ctx: discord.AutocompleteContext):
+        gameservers = list(config.keys())
+        return gameservers
+
+    #get the actions from the cmds list
+    def get_cmds(ctx: discord.AutocompleteContext):
+        return cmds
 
 
     #Starts, Stops, Restarts or Updates a Gameserver
     @slash_command(name = "server", description = "Starts, Stops, Restarts or Updates a Gameserver")
-    async def server(self, ctx, server: Option(str), action: Option(str)):
+    async def server(self, ctx, server: Option(str, autocomplete=get_servers), action: Option(str, autocomplete=get_cmds), cmds):
         gameservers = list(config.keys())
-        commands = ["start", "stop", "restart", "update"]
         global running
         global gameRunning
 
@@ -34,8 +42,8 @@ class gameservers(commands.Cog):
             return
         
         #Checks if the action exists
-        if action not in commands:
-            await ctx.respond(f"The action {action} does not exist!, available actions are: {', '.join(commands)}")
+        if action not in cmds:
+            await ctx.respond(f"The action {action} does not exist!, available actions are: {', '.join(cmds)}")
             return
 
         #Starts the Server
@@ -73,7 +81,7 @@ class gameservers(commands.Cog):
                 gameRunning = None
                 return running, gameRunning
             
-        #Restartet den Server
+        #restarts the Server
         elif action == "restart":
             if running == False:
                 await ctx.respond("No Server is running!")
@@ -88,7 +96,7 @@ class gameservers(commands.Cog):
                 await ctx.respond(f"**{gameRunning}** is restarting!")
                 return running, gameRunning
             
-        #Updated den Server
+        #updates the Server
         elif action == "update":
             if running:
                 await ctx.respond(f"please stop the **{gameRunning}** beforehand!")

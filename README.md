@@ -20,7 +20,7 @@ Currently its able to start, stop, restart and update LinuxGSM Servers that are 
 
 ### Installation
 
-1. Create a Bot and get the Token[Guide](https://guide.pycord.dev/getting-started/creating-your-first-bot)
+1. Create a Bot and get the Token: [Guide](https://guide.pycord.dev/getting-started/creating-your-first-bot)
 2. Create a Directory for the Bot on your Server ```mkdir LinuxGSM-Discord```
 3. Install git using ```sudo apt-get install git```
 4. Clone the Repository to your desired directory using ```git clone https://github.com/osnium/LinuxGSM-Discord-Bot.git``` inside it [^1]
@@ -29,14 +29,14 @@ Currently its able to start, stop, restart and update LinuxGSM Servers that are 
 7. Edit the ```gameservers.json``` and add your server names, Paths and file names
 8. Put your Bot Token inside ```bot.run("token")``` at the bottom of the main.py
 
-###Usage
+### Usage
 
 - Start your Bot using ```pm2 start main.py ---name=BotName ---interpreter=python3``` inside the main.py directory
 - Now you can start / stop / restart the bot using ```pm 2 <command> BotName```
 - Refrain from messing with the servers outside of Discord to not have the bot mix up things
 - Feel free to change bot commands permission using Discords inbuild integration feature
 
-##Todo
+## Todo
 
 - [ ] Add easier way to add / remove servers from the configuration
 - [ ] Allow a specified amount of servers to be hosted at the same time

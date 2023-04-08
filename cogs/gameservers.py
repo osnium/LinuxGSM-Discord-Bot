@@ -175,9 +175,15 @@ class gameservers(commands.Cog):
     #Test Command
     @slash_command(name = "test", description = "Test Command")
     async def test(self, ctx):
+        #retrieve the data from the database
         async with aiosqlite.connect("gameservers.db") as db:
-            serverData = await db.execute("SELECT * FROM gameservers WHERE serverNick = ?", ("test",))
-            print(await serverData.fetchall())
+            serverData = await db.execute("SELECT * FROM gameservers WHERE serverNick = ?", ("untserver",))
+            serverData = await serverData.fetchall()
+            serverFile = serverData[0][2]
+            command = [serverData[0][3], "start"]
+            ctx.respond(f"Data0{serverData[0][0]}, Data1{serverData[0][1]}, Data2{serverData[0][2]}, Data3{serverData[0][3]}")
+            ctx.send(f"ServerFile: {serverFile}, Command: {command}")
+
 
 def setup(bot):
     bot.add_cog(gameservers(bot))

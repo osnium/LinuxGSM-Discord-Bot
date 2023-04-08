@@ -174,10 +174,11 @@ class gameservers(commands.Cog):
 
     #Test Command
     @slash_command(name = "test", description = "Test Command")
-    async def test(self, ctx):
+    async def test(self, ctx, servername: Option(str, autocomplete=get_servers)):
         #retrieve the data from the database
+        print(f"Servername: {servername}")
         async with aiosqlite.connect("gameservers.db") as db:
-            serverData = await db.execute("SELECT * FROM gameservers WHERE serverNick = ?", ("untserver",))
+            serverData = await db.execute("SELECT * FROM gameservers WHERE serverNick = ?", (servername,))
             serverData = await serverData.fetchall()
             serverFile = serverData[0][2]
             command = [serverData[0][3], "start"]

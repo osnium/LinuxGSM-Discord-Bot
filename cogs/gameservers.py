@@ -77,6 +77,7 @@ class gameservers(commands.Cog):
     @slash_command(name = "server", description = "Starts, Stops, Restarts or Updates a Gameserver")
     async def server(self, ctx, server: Option(str, autocomplete=get_servers), action: Option(str, autocomplete=get_cmds)):
         gameservers = await self.get_servers()
+        
 
         #Checks if the Server exists
         if server not in gameservers:
@@ -102,8 +103,10 @@ class gameservers(commands.Cog):
                     process = subprocess.Popen(command, cwd=serverFile,)
                     await ctx.respond(f"**{serverData[0][1]}** is starting!")
                     await self.bot.change_presence(status=None, activity=discord.Game(serverData[0][1]))
+
+
                     self.running = True
-                    self.gameRunning = True
+                    self.gameRunning = serverData[0][1]
                     return self.running, self.gameRunning
 
             

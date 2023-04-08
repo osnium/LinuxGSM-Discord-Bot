@@ -183,7 +183,7 @@ class gameservers(commands.Cog):
             command = [serverData[0][3], "start"]
             await ctx.respond(f"Data0{serverData[0][0]}, Data1{serverData[0][1]}, Data2{serverData[0][2]}, Data3{serverData[0][3]}")
             await ctx.send(f"ServerFile: {serverFile}, Command: {command}")
-
+            print(f"Type of ServerFile: {type(serverData[0][2])}")
 
 def setup(bot):
     bot.add_cog(gameservers(bot))

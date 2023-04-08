@@ -115,6 +115,7 @@ class gameservers(commands.Cog):
         elif action == "stop":
             async with aiosqlite.connect("gameservers.db") as db:
                 serverName = await db.execute("SELECT serverName FROM gameservers WHERE serverNick = ?", (server,))
+                serverName = await serverName.fetchall()
             if self.running == False: #checks if a Server is running
                 await ctx.respond("No Server is running!")
                 return
@@ -139,6 +140,8 @@ class gameservers(commands.Cog):
         elif action == "restart":
             async with aiosqlite.connect("gameservers.db") as db:
                 serverName = await db.execute("SELECT serverName FROM gameservers WHERE serverNick = ?", (server,))
+                serverName = await serverName.fetchall()
+                
 
             if self.running == False:
                 await ctx.respond("No Server is running!")

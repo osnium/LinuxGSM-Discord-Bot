@@ -144,7 +144,7 @@ class gameservers(commands.Cog):
                 await ctx.respond("No Server is running!")
                 return
             elif self.gameRunning != serverName:
-                await ctx.respond(f"{self.gameRunning} is currently running!")
+                await ctx.respond(f"{self.gameRunning} serverName: {serverName} is currently running!")
                 return  
             else:
                 async with aiosqlite.connect("gameservers.db") as db:

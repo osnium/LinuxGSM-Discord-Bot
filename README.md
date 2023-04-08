@@ -42,7 +42,7 @@ Currently its able to start, stop, restart and update LinuxGSM Servers that are 
 
 ## Todo
 
-- [ ] Add easier way to add / remove servers from the configuration
+- [x] Add easier way to add / remove servers from the configuration
 - [ ] Allow a specified amount of servers to be hosted at the same time
 - [ ] Find a better way to get server statuses
 

@@ -181,6 +181,7 @@ class gameservers(commands.Cog):
             serverData = await serverData.fetchall()
             serverFile = serverData[0][2]
             command = [serverData[0][3], "start"]
+            subprocess.Popen(command, cwd=serverFile,)
             await ctx.respond(f"Data0{serverData[0][0]}, Data1{serverData[0][1]}, Data2{serverData[0][2]}, Data3{serverData[0][3]}")
             await ctx.send(f"ServerFile: {serverFile}, Command: {command}")
             print(f"Type of ServerFile: {type(serverData[0][2])}")

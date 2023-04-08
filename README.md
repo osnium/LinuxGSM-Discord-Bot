@@ -25,8 +25,9 @@ Currently its able to start, stop, restart and update LinuxGSM Servers that are 
 2. Create a Directory for the Bot on your Server ```mkdir LinuxGSM-Discord```
 3. Install git using ```sudo apt-get install git```
 4. Clone the Repository to your desired directory using ```git clone https://github.com/osnium/LinuxGSM-Discord-Bot.git``` inside it [^1]
-5. Install NodeJS and NPM using ```sudo apt install nodejs``` & ```sudo apt install npm```
-6. Install Pm2 using ```npm install pm2 -g```
+5. Install aiosqlite & pycord with ```pip install py-cord aiosqlite```
+6. Install NodeJS and NPM using ```sudo apt install nodejs``` & ```sudo apt install npm```
+7. Install Pm2 using ```npm install pm2 -g```
 8. Put your Bot Token inside ```bot.run("token")``` at the bottom of the main.py
 
 ### Usage
